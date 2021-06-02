@@ -24,6 +24,7 @@
   --backgrount-third-color: #f5f4fa;
 
   --background-opacity: rgba(48, 49, 59, 0.8);
+  --background-overlay-op: rgba(33, 150, 243, 0.9);
 
   --border-radius: 4px;
   --project-card-border: 1px solid #eee;
@@ -48,15 +49,24 @@ body {
 /* ссылки на страничках */
 .link {
   display: block;
-  color: inherit;
   text-decoration: none;
   letter-spacing: 0.02em;
+  color: inherit;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0ms;
 }
 
 /* кнопки на страничках */
 .btn {
   font-family: var(--font-family-site);
-  border: 0;
+  outline: none;
+  border: none;
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0ms;
   color: var(--text-color);
   background-color: var(--backgrount-third-color);
   border-radius: var(--border-radius);
@@ -68,11 +78,6 @@ body {
 .btn:hover,
 .btn:focus {
   cursor: pointer;
-  outline: none;
-  transition-property: color, background-color, box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0ms;
   color: var(--text-light-color);
   background-color: var(--accent-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
@@ -151,6 +156,7 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  transition-property: color, background-color;
 }
 
 /* общий контейнер для всех разделов и секций */
@@ -278,8 +284,11 @@ body {
 
 /* оформление ссылок в футере */
 .footer-link {
-  line-height: 1.714;
   color: var(--text-color-transparent);
+}
+
+.address-list .link {
+  line-height: 1.714;
 }
 
 /* цвет строки-ссылки с почтовым адресом */
@@ -296,10 +305,6 @@ body {
 .link:hover,
 .link:focus,
 .link.active {
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0ms;
   color: var(--accent-color);
 }
 
@@ -320,7 +325,6 @@ body {
 
 .social-link:hover,
 .social-link:focus {
-  transition-property: color, background-color;
   color: var(--text-light-color);
   background-color: var(--accent-color);
 }
@@ -591,17 +595,44 @@ body {
 .project-link {
   display: flex;
   flex-direction: column;
+  transition-property: box-shadow;
 }
 
 .project-card .project-link:hover,
 .project-card .project-link:focus {
   color: inherit;
-  transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0ms;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.project-link .card-thumb {
+  position: relative;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 1.556;
+  opacity: 1;
+  /* transform: translateY(100%); */
+  transition-property: transform, opacity;
+  transition-duration: 2500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0ms;
+  transform-origin: bottom center;
+  color: var(--text-light-color);
+  background-color: var(--background-overlay-op);
+}
+
+.overlay-text:hover,
+.overlay-text:focus {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* блок с описание проекта */
@@ -622,7 +653,7 @@ body {
 }
 
 /* описание проекта */
-.project-card .text {
+.text-project {
   font-size: 16px;
   line-height: 1.875;
   color: var(--text-muted-color);
