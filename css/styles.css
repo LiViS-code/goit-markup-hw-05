@@ -36,6 +36,7 @@
     0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-duration: 250ms;
 }
 
 /* Исходные параметры для всего контента */
@@ -55,9 +56,8 @@ body {
   letter-spacing: 0.02em;
   color: inherit;
   transition-property: color;
-  transition-duration: 250ms;
+  transition-duration: var(--transition-duration);
   transition-timing-function: var(--timing-function);
-  transition-delay: 0ms;
 }
 
 /* кнопки на страничках */
@@ -66,7 +66,7 @@ body {
   outline: none;
   border: none;
   transition-property: color, background-color, box-shadow;
-  transition-duration: 250ms;
+  transition-duration: var(--transition-duration);
   transition-timing-function: var(--timing-function);
   color: var(--text-color);
   background-color: var(--backgrount-third-color);
@@ -603,6 +603,7 @@ body {
   transition-property: box-shadow;
 }
 
+/* тень карточки проекта при активации */
 .project-card .project-link:hover,
 .project-card .project-link:focus {
   color: inherit;
@@ -627,7 +628,7 @@ body {
   font-size: 18px;
   line-height: 1.556;
   transition-property: transform;
-  transition-duration: 250ms;
+  transition-duration: var(--transition-duration);
   transition-timing-function: var(--timing-function);
   color: var(--text-light-color);
   background-color: var(--background-overlay-op);
