@@ -433,7 +433,7 @@ body {
   top: 50%;
   left: 50%;
   padding: 8px;
-  transform: translate3d(-50%, -50%, 0) scale(1);
+  transform: translate3d(-50%, -50%, 0) scale(1) rotate3d(0, 0, 0, 0);
   transition: transform calc(1.5 * var(--transition-duration))
     var(--timing-function);
   background-color: var(--background-prime-color);
@@ -449,7 +449,7 @@ body {
 }
 
 .backdrop.is-hidden .modal {
-  transform: translate3d(-50%, -50%, 0) scale(1.2);
+  transform: translate3d(-50%, -50%, 0) scale(1.2) rotate3d(0, -20, 0, 90deg);
 }
 
 /* кнопка закрыть модальное окно */
